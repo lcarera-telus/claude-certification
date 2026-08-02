@@ -82,7 +82,10 @@ Only the official Skilljar material is authoritative. Where sources conflict, no
 
 ## Conventions
 
-Keep study notes and exercise work outside `claude-certified-architect/` — that directory is an upstream clone and should stay pristine so it can be pulled. Own work lives under `notes/`; `notes/progress-log.md` is a chronological log (newest entry first) of diagnostic tests and mock-exam results, one entry per attempt with per-domain scores and a takeaway on what to study next.
+Keep study notes and exercise work outside `claude-certified-architect/` — that directory is an upstream clone and should stay pristine so it can be pulled. Own work lives under `notes/`:
+
+- `notes/progress-log.md` — chronological log (newest entry first) of full mock exams and diagnostics only, one entry per attempt with per-domain scores and a takeaway on what to study next.
+- `notes/<NN-domain-name>/<N.N-task-name>/notes.md` — task-statement-level drill notes, one folder per task statement, mirroring the numbering and naming used in `projects/claudecertificationguide/`.
 
 Because the exam scores tradeoff judgment, a note explaining *why each distractor is wrong* is worth more than one restating the correct answer. For a missed practice question, record the misconception, not just the fix.
 
