@@ -89,8 +89,9 @@ def execute_tool(name: str, tool_input: dict) -> str:
 
 def run_agentic_loop(client, user_message: str) -> str:
     messages = [{"role": "user", "content": user_message}]
-
-    while True:
+    MAX_ITERATIONS = 20
+    iteration = 0
+    while iteration < MAX_ITERATIONS:
         response = client.messages.create(
             model=DEFAULT_MODEL,
             max_tokens=1024,
@@ -100,7 +101,7 @@ def run_agentic_loop(client, user_message: str) -> str:
         messages.append({"role": "assistant", "content": response.content})
 
         print("---\nAssistant response:\n", response.stop_reason, "\n---")
-        if response.stop_reason != "tool_use":
+        if response.stop_reason == "end_turn":
             return next(
                 (b.text for b in response.content if b.type == "text"), ""
             )
@@ -118,7 +119,9 @@ def run_agentic_loop(client, user_message: str) -> str:
                     }
                 )
         messages.append({"role": "user", "content": tool_results})
-
+        iteration += 1
+        if iteration == MAX_ITERATIONS:
+            return "error: reached maximum iterations without a final answer"
 
 if __name__ == "__main__":
     client = get_client()
