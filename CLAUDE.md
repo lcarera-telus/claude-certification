@@ -4,12 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A personal study workspace for the **Claude Certified Architect – Foundations (CCA-F)** certification. It is not an application — there is no build, no test suite, and no dependency manifest.
+A personal study workspace for the **Claude Certified Architect – Foundations (CCA-F)** certification. It is not an application — there is no build or test suite; the only dependency manifest is `projects/claudecertificationguide/requirements.txt` for the practice exercises.
 
 Current contents:
 
 - `CLAUDE.md` — this file
 - `claude-certified-architect/` — a clone of https://github.com/paullarionov/claude-certified-architect (~124 MB, its own git repo; the parent directory is not under version control)
+- `notes/` — own study notes and progress log (see Conventions)
+- `projects/claudecertificationguide/` — worked exercises from claudecertificationguide.com, one folder per task statement across the five domains
+- `.claude/rules/agentic-loop-stop-reason.md` — path-scoped rule for exercise code (stop-reason handling in manual tool-use loops)
 
 Work here is study artifacts: notes, worked exercises, practice-exam post-mortems. Treat exercise code as disposable learning material — the goal is understanding the tradeoff being tested, not a polished implementation.
 
@@ -80,12 +83,25 @@ The "Out-of-Scope Topics" section is worth reading early — it bounds what you 
 
 Only the official Skilljar material is authoritative. Where sources conflict, note the discrepancy rather than averaging them.
 
+## Running exercises
+
+Exercises live under `projects/claudecertificationguide/<NN-domain>/<N.N-task>/main.py` and share `common/client.py`, which reads `.env` at the project root.
+
+```bash
+cd projects/claudecertificationguide
+pip install -r requirements.txt
+cp .env.example .env   # then set ANTHROPIC_AUTH_TOKEN
+python 01-agentic-architecture-orchestration/1.1-agentic-loops/main.py
+```
+
+`.env` points at a FuelIX gateway (`ANTHROPIC_BASE_URL=https://api.fuelix.ai`) with `ANTHROPIC_AUTH_TOKEN`, not a first-party `ANTHROPIC_API_KEY`. `ANTHROPIC_MODEL` overrides the default model.
+
 ## Conventions
 
 Keep study notes and exercise work outside `claude-certified-architect/` — that directory is an upstream clone and should stay pristine so it can be pulled. Own work lives under `notes/`:
 
 - `notes/progress-log.md` — chronological log (newest entry first) of full mock exams and diagnostics only, one entry per attempt with per-domain scores and a takeaway on what to study next.
-- `notes/<NN-domain-name>/<N.N-task-name>/notes.md` — task-statement-level drill notes, one folder per task statement, mirroring the numbering and naming used in `projects/claudecertificationguide/`.
+- `notes/<NN-domain-name>/<N.N-task-name>/notes.md` — task-statement-level drill notes, one folder per task statement, mirroring the numbering and naming used in `projects/claudecertificationguide/`. Numbering must match; names have drifted in places (e.g. notes `1.2-coordinator-subagent-orchestration` vs project `1.2-multi-agent-orchestration`) — match on the `N.N` prefix, not the slug.
 
 Because the exam scores tradeoff judgment, a note explaining *why each distractor is wrong* is worth more than one restating the correct answer. For a missed practice question, record the misconception, not just the fix.
 
