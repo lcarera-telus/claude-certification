@@ -2,9 +2,35 @@
 
 Chronological log of full mock exams and diagnostics only. Newest entry on top. Each entry: source, date, per-domain score, and what it implies for study priority. Task-statement-level drill notes live under `notes/<domain-folder>/<task-folder>/notes.md`, mirroring the folder structure in `projects/claudecertificationguide/`.
 
-**Current focus (as of 2026-07-31, updated after second mock):** Domain 2 — Tool Design & MCP Integration is now the clear weakest domain (60%, 3/5) and the priority gap. D3 and D4, previously flagged weak, both recovered strongly (100% and 83%) under slower, unhurried exam conditions — reinforcing that pacing/pressure, not just knowledge gaps, was part of the earlier D3/D4 misses.
+**Current focus (as of 2026-08-04, updated after 60-question mock):** D2 fully recovered to 100%, confirming the 2026-07-31 dip was sample noise, not a real gap. **D4 (67%) and D1 (71%) are now the weakest domains** and the priority — together they carry 47% of the real exam's weight, so gains here move the total score more than any other pair.
 
-**Study strategy (decided 2026-07-31):** Domain-by-domain, task-statement by task-statement, with periodic full mock exams to check whether drilling is translating into domain-level gains (not just task-statement recognition — see the mock exam entries below). Next priority: Domain 2 task statements, drilling the specific MCP/tool-design questions missed on 2026-07-31's second mock.
+**Study strategy (decided 2026-07-31, still in effect):** Domain-by-domain, task-statement by task-statement, with periodic full mock exams to check whether drilling is translating into domain-level gains (not just task-statement recognition — see the mock exam entries below). Next priority: review the specific D1 and D4 questions missed on this mock, then a dedicated drill pass on both before the next mock.
+
+---
+
+## 2026-08-04 — practice.cyberskill.world mock exam (60 questions)
+
+**826/1000 — PASSED** (pass mark 720). 50/60 correct (83%).
+
+| Domain | Score | % | Weighted pts |
+|---|---|---|---|
+| D1 Agentic Architecture & Orchestration | 10/14 | 71% | 193 |
+| D2 Tool Design & MCP Integration | 11/11 | 100% | 180 |
+| D3 Claude Code Configuration & Workflows | 11/12 | 92% | 183 |
+| D4 Prompt Engineering & Structured Output | 8/12 | 67% | 133 |
+| D5 Context Management & Reliability | 10/11 | 91% | 136 |
+
+**D2 fully recovered (60% → 100%)** — confirms the 2026-07-31 mock #2 reading that the 60% dip was noise from a small 5-question sample, not a real gap. No dedicated D2 drill pass was done in between, so this is further evidence D2 doesn't need must-fix urgency.
+
+**D4 dropped back down (83% → 67%)** — after recovering on 2026-07-31 mock #2 under slower pacing, it's regressed again on a larger, harder 12-question sample. This is the first mock with double-digit D4 questions, so it's a more reliable signal than the earlier 5-6 question samples. **D1 also came in soft at 71%** (10/14) — its first sub-100% showing since the pacing fix on 2026-07-31. Both are now below the other three domains.
+
+**Takeaway:** Comfortably above pass mark (826 vs. 720), and the D2 recovery is a good sign that earlier domain volatility was mostly small-sample noise rather than real gaps. D1 and D4 are the two domains that still show real misses on a reasonably sized sample (14 and 12 questions respectively) — these are the priority now, not D2.
+
+**Next actions:**
+- Review the specific D1 and D4 questions missed on this mock (source: practice.cyberskill.world, "SHOW DETAIL" view) to identify the misconception behind each, not just the correct answer.
+- D1 hadn't had a dedicated task-statement drill pass yet (only 1.1 and 1.2 have notes so far per `notes/01-*`) — continue through remaining D1 task statements.
+- D4 has had a full task-statement drill pass already per earlier notes; a repeat regression suggests either genuine edge cases in prompt engineering/structured output, or this domain's question pool is just harder/more varied than the drills covered — worth comparing missed questions against existing D4 drill notes.
+- Retake a full mock after the D1/D4 drill pass to confirm whether it moves the domain scores.
 
 ---
 
