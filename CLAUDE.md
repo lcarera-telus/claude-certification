@@ -10,7 +10,7 @@ Current contents:
 
 - `CLAUDE.md` — this file
 - `claude-certified-architect/` — a clone of https://github.com/paullarionov/claude-certified-architect (~124 MB, its own git repo; the parent directory is not under version control)
-- `notes/` — own study notes and progress log (see Conventions)
+- `notes/` — own study notes and progress log (see Conventions), including `notes/official-exam-guide.md`, the distilled official Exam Guide
 - `projects/claudecertificationguide/` — worked exercises from claudecertificationguide.com, one folder per task statement across the five domains
 - `.claude/rules/agentic-loop-stop-reason.md` — path-scoped rule for exercise code (stop-reason handling in manual tool-use loops)
 
@@ -18,50 +18,55 @@ Work here is study artifacts: notes, worked exercises, practice-exam post-mortem
 
 ## Exam facts
 
-From the official Skilljar listing:
-
-- **$125** per attempt, proctored via Skilljar
-- Scope: Claude Code, Claude Agent SDK, Claude API, MCP
-- Tests judgment about **tradeoffs** in real-world Claude solutions, not API trivia
-- Access is gated to Anthropic Partner Network members with a verified partner-company email; free for the first 5,000, then $99. Request access: https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request
-
-From `claude-certified-architect/guide_en.md`, which states it is based on the official Exam Guide:
+**Authoritative source: the official Exam Guide** (v1.0, effective July 2026), read 2026-08-24. Distilled into `notes/official-exam-guide.md`; original PDF at `~/Downloads/claude certification exam.pdf`. Everything below is from that guide and supersedes the community/third-party numbers this file previously carried.
 
 | Parameter | Value |
 |---|---|
-| Question type | Multiple choice, 1 correct of 4 |
-| Scoring | 100–1000 scale, **720 to pass** |
-| Guessing penalty | None — answer every question |
-| Scenarios | **4 of 8, randomly selected** |
+| Credential / exam code | Claude Certified Architect – Foundations / **CCAR-F** |
+| Number of items | **60** |
+| Item format | Multiple-choice **and multiple-response**; each item states how many responses to select |
+| Exam structure | **4 scenarios drawn from a bank of 6** |
+| Time limit | **120 minutes** |
+| Delivery | **Pearson VUE** — online proctored or test center |
+| Passing score | Scaled **720** on a 100–1,000 scale |
+| Fee | **$125 USD** per attempt |
+| Validity | **12 months** from award date |
+| Result reporting | Pass/fail + scaled score, plus percent-correct by domain |
 
-Third-party guides add **60 questions / 120 minutes / closed-book**. The community guide's format table does not confirm this — treat as unverified.
+Scope: Claude Code, Claude Agent SDK, Claude API, MCP. Tests practical judgment about architecture, configuration, and **tradeoffs**, not API trivia.
+
+**Scoring is criterion-referenced** — measured against a fixed standard set by a standard-setting study, not against other candidates. Critically: **per-domain percentages on the score report are informational only and do not determine pass/fail** — only the total scaled score does. Do not optimise study time against a single mock's domain bars.
+
+**Logistics:** registration through the Anthropic Partner Academy, scheduling through Pearson VUE. Cancel/reschedule up to **24 hours** before, or forfeit the fee. Valid unexpired government-issued photo ID required, name matching the registration exactly. Closed-book and closed-room: no notes, books, phones, smart watches, headphones, or secondary monitors; stay in webcam view throughout. A confidentiality/NDA must be accepted before the exam starts. Retakes: 14 days after a first fail, 30 after a second, 90 after a third; max 4 attempts per rolling 12 months, fee each time.
+
+The guide does **not** mention a guessing penalty (the community guide claimed there is none). Unstated either way — but with no evidence of one, answering every item remains correct.
 
 ## The five domains
 
-Weights are consistent across the community guide and third-party sources:
+Weights confirmed against the official blueprint:
 
 | # | Domain | Weight |
 |---|--------|--------|
-| 1 | Agent architecture & orchestration | **27%** |
-| 3 | Claude Code configuration & workflows | 20% |
-| 4 | Prompt engineering & structured output | 20% |
-| 2 | Tool design & MCP integration | 18% |
-| 5 | Context management & reliability | 15% |
+| 1 | Agentic Architecture & Orchestration | **27%** |
+| 3 | Claude Code Configuration & Workflows | 20% |
+| 4 | Prompt Engineering & Structured Output | 20% |
+| 2 | Tool Design & MCP Integration | 18% |
+| 5 | Context Management & Reliability | 15% |
 
-Scoring is domain-weighted, so accuracy in Domain 1 moves the total more than equal accuracy in Domain 5. Domains 3 + 4 together (40%) outweigh Domain 1 alone.
+Weights are the *approximate proportion of scored items* per domain. Domains 3 + 4 together (40%) outweigh Domain 1 alone. The official guide breaks each domain into numbered task statements (D1 ×7, D2 ×5, D3 ×6, D4 ×6, D5 ×6) with explicit "Knowledge of" / "Skills in" bullets — these are what items are written against. Full list in `notes/official-exam-guide.md`.
 
-## The eight scenarios
+## The six scenarios
 
-The exam draws 4 of these 8 at random, so none can be safely skipped:
+The exam presents **4 of these 6** at random, so none can be safely skipped:
 
-1. Customer support agent — Agent SDK, MCP tools (`get_customer`, `lookup_order`, `process_refund`, `escalate_to_human`), escalation policy
-2. Code generation with Claude Code — slash commands, CLAUDE.md config, when to use plan mode
-3. Multi-agent research — coordinator delegating to specialized subagents, citations
-4. Developer productivity — codebase exploration, built-in tools (Read/Write/Bash/Grep/Glob), MCP servers
-5. Claude Code in CI/CD — automated review, test generation, minimizing false positives
-6. Structured data extraction — JSON schema validation, edge cases
-7. Conversational architecture — context window management, instruction persistence, memory, ambiguous input
-8. Agentic AI tools — **content missing from the community guide.** Reported by candidates but not covered. Known blind spot; cover it from other resources.
+1. **Customer Support Resolution Agent** — Agent SDK, MCP tools (`get_customer`, `lookup_order`, `process_refund`, `escalate_to_human`), 80%+ first-contact resolution target, escalation. *Primary domains: 1, 2, 5*
+2. **Code Generation with Claude Code** — slash commands, CLAUDE.md config, plan mode vs direct execution. *Primary domains: 3, 5*
+3. **Multi-Agent Research System** — coordinator delegating to search/analysis/synthesis/report subagents, cited reports. *Primary domains: 1, 2, 5*
+4. **Developer Productivity with Claude** — codebase exploration, built-in tools (Read/Write/Bash/Grep/Glob), MCP servers. *Primary domains: 2, 3, 1*
+5. **Claude Code for Continuous Integration** — automated review, test generation, minimizing false positives. *Primary domains: 3, 4*
+6. **Structured Data Extraction** — JSON schema validation, edge cases, downstream integration. *Primary domains: 4, 5*
+
+**Correction (2026-08-24):** this file previously listed *eight* scenarios, adding "Conversational architecture" and "Agentic AI tools" from the community guide, and flagged the latter as a known blind spot. **Neither exists in the official guide.** The bank is 6. That blind spot was an artifact of an unofficial source, not a gap in preparation.
 
 ## Primary study resource: `claude-certified-architect/`
 
@@ -81,7 +86,7 @@ The "Out-of-Scope Topics" section is worth reading early — it bounds what you 
 - **practice.cyberskill.world** (was `ccaf.cyberskill.world`, 301) — free 60q/120min mock at the 720/1000 cut score, 15 questions each across research pipelines, extraction pipelines, support agents, code exploration. Independent, not Anthropic-affiliated.
 - **Udemy: "Anthropic Claude Certified Architect – 3 Full Practice Exams"** — timed practice volume.
 
-Only the official Skilljar material is authoritative. Where sources conflict, note the discrepancy rather than averaging them.
+Only the official Exam Guide is authoritative (`notes/official-exam-guide.md`). Where sources conflict, the official guide wins — note the discrepancy rather than averaging them.
 
 ## Running exercises
 
@@ -107,6 +112,6 @@ Because the exam scores tradeoff judgment, a note explaining *why each distracto
 
 ## Open questions
 
-- The official Exam Guide PDF sits behind Skilljar enrollment and has not been read. Everything above is from the community guide and third-party sites. Verify and correct this file once you have it.
-- Question count and time limit are unconfirmed.
-- Whether partner-tier access works with a `@gm2dev.com` address is untested.
+- Resolved 2026-08-24: the official Exam Guide has been read; the exam facts, domain, and scenario sections above now reflect it. Where the community guide (`claude-certified-architect/guide_en.md`) conflicts, the official guide wins — notably scenario count (6, not 8) and item format (multiple-response items exist).
+- Per-domain item counts are not published; only approximate weights.
+- Community and third-party sources remain useful for *practice volume*, but every factual claim they make about format should now be checked against `notes/official-exam-guide.md`.

@@ -2,9 +2,159 @@
 
 Chronological log of full mock exams and diagnostics only. Newest entry on top. Each entry: source, date, per-domain score, and what it implies for study priority. Task-statement-level drill notes live under `notes/<domain-folder>/<task-folder>/notes.md`, mirroring the folder structure in `projects/claudecertificationguide/`.
 
-**Current focus (as of 2026-08-04, updated after 60-question mock):** D2 fully recovered to 100%, confirming the 2026-07-31 dip was sample noise, not a real gap. **D4 (67%) and D1 (71%) are now the weakest domains** and the priority — together they carry 47% of the real exam's weight, so gains here move the total score more than any other pair.
+**EXAM SCHEDULED: Thursday 2026-09-03, 15:00** (booked as of 2026-08-24 — 10 days out). Delivered by Pearson VUE, 60 items / 120 min, cut score 720/1000.
 
-**Study strategy (decided 2026-07-31, still in effect):** Domain-by-domain, task-statement by task-statement, with periodic full mock exams to check whether drilling is translating into domain-level gains (not just task-statement recognition — see the mock exam entries below). Next priority: review the specific D1 and D4 questions missed on this mock, then a dedicated drill pass on both before the next mock.
+**The official Exam Guide was read on 2026-08-24** — see `notes/official-exam-guide.md`. Two findings change how this log should be read: (1) the scenario bank is **6, not 8** — the long-tracked "Scenario 8 / agentic AI tools" blind spot does not exist; (2) the guide states that **per-domain percentages are informational and do not determine pass/fail**, only the total scaled score does — which independently confirms the 2026-08-18 conclusion that per-domain bars should not drive study priority. The remaining window is for repeated-misconception review and the multiple-response item format (new, previously unknown), not for adding practice volume.
+
+**Current focus (as of 2026-08-18, updated after Udemy mock exam #3/6):** Third Udemy exam passed at 93% (56/60), tied with exam #1; the three Udemy exams sit in a tight 90-93% band (~902-936/1000 weighted). **The D2/D3 dip flagged on exam #2 did not repeat** — D2 recovered 82%→100%, D3 83%→92%, and D1 hit 100% for the first time. The misses instead moved to **D4 (83%, first Udemy dip)** and **D5 (89%, after two 100%s)**, both 1-2 question deltas. No domain has dipped on two consecutive exams: the aggregate is stable while the decomposition rotates, which is small-sample noise, not a knowledge gap. Next: stop re-prioritising domains off single-exam percentages; hunt for *repeated* misconceptions across exams instead, and spend the time on the two genuinely unmeasured risks — Scenario 8 (agentic AI tools, the CLAUDE.md blind spot) and the unread official Exam Guide.
+
+**Study strategy (decided 2026-07-31; diagnostic loop revised 2026-08-18):** Domain-by-domain, task-statement by task-statement, with periodic full mock exams. As of exam #3/6, per-domain percentages on 9-16 question samples have proven too noisy to set priority — the loop is now "which misconception recurs across exams," reviewed from the missed questions themselves, plus closing known content blind spots (Scenario 8, official Exam Guide) rather than adding practice volume.
+
+---
+
+## 2026-08-18 — Udemy "Anthropic Claude Certified Architect – 3 Full Practice Exams" mock exam #3/6 (Exam mode, 60 questions)
+
+**93% correct (56/60) — PASSED** (72% required to pass). 1 hour 2 minutes — the fastest of the three Udemy attempts (1h07m, 1h11m, 1h02m).
+
+| Domain | Score | % |
+|---|---|---|
+| D1 Agentic Architecture & Orchestration | 16/16 | 100% |
+| D2 Tool Design & MCP Integration | 11/11 | 100% |
+| D3 Claude Code Configuration & Workflows | 11/12 | 92% |
+| D4 Prompt Engineering & Structured Output | 10/12 | 83% |
+| D5 Context Management & Reliability | 8/9 | 89% |
+
+Hand-computed weighted equivalent (same method as the 2026-08-13 and 2026-08-15 entries, using CLAUDE.md's domain weights): ~933/1000 — essentially tied with exam #1 (~936) and above exam #2 (~902).
+
+**The exam #2 prediction resolved in favour of noise.** The previous entry said: "watch D2 and D3 for a third consecutive dip, which would upgrade 'noise' to 'real gap'." Neither dipped — **D2 recovered from 82% to 100%** (its best result on any mock) and **D3 recovered from 83% to 92%**. D1 also hit **100% for the first time** on any 60-question mock.
+
+**Instead, the misses moved to D4 and D5.** D4 fell to 83% (10/12) — its first sub-90% on Udemy after 92% and 92%. D5 fell to 89% (8/9) after two straight 100%s. Both are 1-2 question deltas.
+
+**The three-exam pattern is now the most useful signal in this log, and it is a pattern about the measurement, not about the knowledge.** Across Udemy #1/#2/#3:
+
+| Domain | #1 | #2 | #3 |
+|---|---|---|---|
+| D1 | 94% | 94% | 100% |
+| D2 | 91% | 82% | 100% |
+| D3 | 92% | 83% | 92% |
+| D4 | 92% | 92% | 83% |
+| D5 | 100% | 100% | 89% |
+| **Total** | **93%** | **90%** | **93%** |
+
+**No domain has dipped on two consecutive exams.** The total sits in a tight 90-93% band while the 4-6 misses rotate between domains from attempt to attempt. On 9-16 question samples, a single missed question is 6-11 percentage points, so a domain "dropping to 83%" means two wrong answers. That is what small-sample noise looks like: stable aggregate, unstable decomposition. This retires the question that has been open in this log since 2026-07-31 — **the per-domain swings (D2 especially, six swings across two sources) were never a knowledge signal**, and the log's discipline of waiting for ≥2-3 consecutive same-source dips was the right call, because that condition has now been tested three times and never once been met.
+
+**Takeaway:** Three independent 60-question exams at 90-93%, weighted equivalents ~902-936/1000 against a 720 cut, with every domain having scored ≥91% at least once. Readiness is no longer the open question. Per-domain percentages on 9-16 question samples should stop driving study priority — only a domain that dips twice in a row, or a specific repeated misconception found by reviewing the actual missed questions, is worth acting on.
+
+**Next actions:**
+- Stop re-prioritising domains off single-exam percentages. Switch the diagnostic loop from "which domain scored lowest" to "which misconception recurs" — review the 4 missed questions here (2× D4, 1× D3, 1× D5) and check whether any of them repeats a miss from exams #1 or #2. A repeat across exams is worth more than any domain bar in this table.
+- Continue Udemy exams #4-6 primarily to hunt for repeated misconceptions, not to re-measure readiness — that is now well established.
+- Scenario 8 (agentic AI tools) is still the known content blind spot from CLAUDE.md and has never been isolated by any mock's breakdown. It is a bigger unmeasured risk than any 83% domain bar here.
+- The official Exam Guide PDF remains unread (CLAUDE.md open question). With scores this consistent, closing that gap and Scenario 8 is a better use of time than more practice volume.
+
+---
+
+## 2026-08-15 — Udemy "Anthropic Claude Certified Architect – 3 Full Practice Exams" mock exam #2/6 (Exam mode, 60 questions)
+
+**90% correct (54/60) — PASSED** (72% required to pass). 1 hour 11 minutes.
+
+| Domain | Score | % |
+|---|---|---|
+| D1 Agentic Architecture & Orchestration | 15/16 | 94% |
+| D2 Tool Design & MCP Integration | 9/11 | 82% |
+| D3 Claude Code Configuration & Workflows | 10/12 | 83% |
+| D4 Prompt Engineering & Structured Output | 11/12 | 92% |
+| D5 Context Management & Reliability | 9/9 | 100% |
+
+Hand-computed weighted equivalent (same method as the 2026-08-13 entry, using CLAUDE.md's domain weights): ~902/1000 — comfortably above the 720 cut.
+
+**D2 dropped back to 82% (9/11)** right after its strongest-ever showing (91%) on Udemy exam #1 two days prior. Across both sources, D2 has now swung 80%→60%→100%→64%→91%→82% over six mocks — always on a small (5-11 question) sample. The pattern still doesn't clearly resolve to "real gap" vs. "noise," but the swing happening *within the same source* just two exams apart is new information: it argues against "different question bank" being the whole explanation for the earlier cyberskill dip, since Udemy alone just showed the same volatility.
+
+**D3 dropped to 83% (10/12)**, a new weak point — its first sub-90% result on Udemy after 92% on exam #1, and its first sub-90% mock result of any kind since 2026-08-04 (92%). One data point; not yet worth treating as a trend, but worth tracking on exam #3.
+
+**D1 (94%), D4 (92%), and D5 (100%) held steady**, consistent with prior mocks — no new signal there.
+
+**Takeaway:** Still comfortably passing, but this exam muddies rather than confirms the "D2 was just noise" read from exam #1. D3 is a new, small flag. Neither is enough yet to redirect study priority — the discipline established in this log is to wait for a pattern across ≥2-3 same-source data points before treating a domain as a real gap, and D2/D3 are each only 1-2 data points into a possible pattern within Udemy specifically.
+
+**Next actions:**
+- Continue through Udemy exams #3-6; specifically watch D2 and D3 for a third consecutive dip, which would upgrade "noise" to "real gap worth a dedicated drill pass."
+- Review the 6 missed questions (D2 and D3 heaviest) via "Review questions" for the specific misconception, not just the domain tally.
+- Hold off on re-prioritizing study time based on a single dip in either domain — consistent with how this log has treated D2 swings on cyberskill in the past.
+
+---
+
+## 2026-08-13 — Udemy "Anthropic Claude Certified Architect – 3 Full Practice Exams" mock exam #1/6 (Exam mode, 60 questions)
+
+**93% correct (56/60) — PASSED** (72% required to pass). 1 hour 7 minutes.
+
+| Domain | Score | % |
+|---|---|---|
+| D1 Agentic Architecture & Orchestration | 15/16 | 94% |
+| D2 Tool Design & MCP Integration | 10/11 | 91% |
+| D3 Claude Code Configuration & Workflows | 11/12 | 92% |
+| D4 Prompt Engineering & Structured Output | 11/12 | 92% |
+| D5 Context Management & Reliability | 9/9 | 100% |
+
+**New source, different scoring scheme:** this Udemy course reports raw overall % against a flat 72% pass mark, not a domain-weighted /1000 score like practice.cyberskill.world. Applying CLAUDE.md's domain weights (D1 27%, D2 18%, D3 20%, D4 20%, D5 15%) to this breakdown by hand gives an equivalent weighted score of ~936/1000 — comfortably above the 720 cut under either scoring scheme.
+
+**All five domains scored ≥91%, the best across-the-board showing to date.** D2 in particular — flagged as "of concern" after the 2026-08-11 cyberskill mock (64%, its third swing in four attempts, never drilled) — came in at 91% here, its strongest showing yet and further evidence the cyberskill volatility was small-sample noise from that specific question bank rather than a real knowledge gap. Caveat: different question source than the dip, so this is a weaker like-for-like comparison than a same-source retake would be — the two banks may simply test D2 differently.
+
+**Takeaway:** Comfortably passing on a new, independent question bank with no domain below 91% is a good signal of broad readiness. This is exam 1 of 6 in the Udemy course.
+
+**Next actions:**
+- Review the 4 missed questions ("Review questions") for the specific misconception behind each, not just which domain they fell in.
+- Work through the remaining 5 Udemy practice exams as the next diagnostic layer, to see if the strong D2 showing holds up on a larger independent sample and whether any domain-specific weak spot emerges that cyberskill didn't surface.
+- If a domain dips on a later Udemy exam, weight that signal more heavily than a cyberskill dip — Udemy's per-domain samples here (9-16 questions) are larger than cyberskill's (5-11).
+
+---
+
+## 2026-08-11 — practice.cyberskill.world mock exam #4 (60 questions, taken while multitasking / "in the background")
+
+**822/1000 — PASSED** (pass mark 720). 49/60 correct (82%).
+
+| Domain | Score | % | Weighted pts |
+|---|---|---|---|
+| D1 Agentic Architecture & Orchestration | 12/14 | 86% | 231 |
+| D2 Tool Design & MCP Integration | 7/11 | 64% | 115 |
+| D3 Claude Code Configuration & Workflows | 12/12 | 100% | 200 |
+| D4 Prompt Engineering & Structured Output | 10/12 | 83% | 167 |
+| D5 Context Management & Reliability | 8/11 | 73% | 109 |
+
+**D1 and D4 — the two domains flagged as priority after 2026-08-04 — both improved** (D1: 71%→86%, D4: 67%→83%), consistent with the D1/D4 drilling done in between. This is a decent signal the domain-by-domain approach is translating into actual score gains, not just task-statement recognition.
+
+**D2 dropped sharply again (100%→64%) and D5 also dropped (91%→73%).** D2 has now swung 80%→60%→100%→64% across four domain-weighted mocks, always on a small 5-11 question sample and never followed by a dedicated drill pass — the swings are as consistent with "no real signal yet" as with a genuine gap. D5's drop is a new, single data point with no prior volatility to compare against.
+
+**Caveat — this mock was taken while multitasking**, unlike the fully-focused 2026-07-31/08-04 attempts. Divided attention is a plausible confound specifically for the D2/D5 dips (careless-error pattern), while the D1/D4 gains holding up *despite* less focus is arguably a stronger signal than it would be under full attention — if drilled domains improved anyway, the improvement is more likely real knowledge, not just careful test-taking.
+
+**Takeaway:** Comfortably above pass mark. Read this as confirmation that the D1/D4 drill pass is working, and as a reason to finally give D2 the same dedicated treatment rather than continuing to write it off as noise after every dip.
+
+**Next actions:**
+- Do a dedicated D2 task-statement drill pass — it's the only domain never drilled despite three mock-to-mock swings.
+- Retake under full attention (no multitasking) to get a clean read on whether D1/D4 gains hold and whether D2/D5 dips were distraction-driven or real.
+- Keep D1/D4 in lighter consolidation rotation rather than must-fix, given two consecutive improvements.
+
+---
+
+## 2026-08-05 — practice.cyberskill.world mock exam ("exam" mode, scenario breakdown, 60 questions)
+
+**71.67% (43/60)** — no /1000 weighted score shown in this mode (unlike the "practice" mode used on 2026-08-04, which converts to a domain-weighted /1000 score).
+
+| Category | Score | % |
+|---|---|---|
+| code_exploration | 15/18 | 83% |
+| extraction_pipeline | 10/13 | 77% |
+| research_pipeline | 10/15 | 67% |
+| customer_support | 8/14 | 57% |
+
+**Different breakdown scheme than previous entries:** this mode groups questions by exam *scenario* rather than by the five weighted *domains* used elsewhere in this log. Mapping to CLAUDE.md's eight scenarios: `customer_support` ≈ Scenario 1, `research_pipeline` ≈ Scenario 3, `code_exploration` ≈ Scenario 4, `extraction_pipeline` ≈ Scenario 6. Scenarios cut across multiple domains (e.g. `customer_support` tests both D1 orchestration and D2 tool/MCP design), so this table isn't directly comparable to the D1-D5 table in the 2026-08-04 entry — treat it as a complementary signal, not a replacement.
+
+**Directionally consistent with the existing D1 concern:** `customer_support` (57%) and `research_pipeline` (67%) are the two weakest categories, and both are D1-heavy scenarios (agent orchestration, multi-agent coordination) — this lines up with D1 already being flagged as a priority from the 2026-08-04 domain-level mock. `code_exploration` staying strong (83%) also lines up with D3 being solid. `extraction_pipeline` (77%) is harder to read against the earlier D4 finding (67%) since it likely blends D4 (structured output) with D2 (tool design) — not a clean comparison.
+
+**Takeaway:** No pass/fail score is shown in this mode, but 71.67% sits almost exactly at the passing threshold on the 1000-point scale (720/1000 = 72%) — no clear improvement since the 2026-08-04 mock. `customer_support` is now the single weakest category seen across any mock so far, which sharpens (without changing) the existing D1/D4 priority.
+
+**Next actions:**
+- Continue the D1/D4 task-statement drill pass already queued from 2026-08-04.
+- Within D1, specifically review Scenario 1 (customer support agent) content — escalation policy and the `get_customer`/`lookup_order`/`process_refund`/`escalate_to_human` MCP tool set — since it's now the weakest category by a clear margin.
+- Prefer the site's domain-weighted "practice" mode over this scenario-based "exam" mode when tracking progress against the CLAUDE.md D1-D5 weighting; use "exam" mode as a secondary, scenario-level check.
 
 ---
 
