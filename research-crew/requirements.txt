@@ -1,0 +1,30 @@
+# research-crew dependencies
+#
+# claude-agent-sdk drives the locally installed `claude` CLI as a subprocess and
+# builds subagents from AgentDefinition objects. Verified against 0.2.148.
+claude-agent-sdk
+
+# PyYAML parses the frontmatter block of each file in agents/. The body of those
+# files is a prompt, not data, so only the frontmatter goes through YAML.
+PyYAML
+
+# pytest runs the suite in tests/. No test touches the network or the model.
+pytest
+
+# ---------------------------------------------------------------------------
+# WHY python-dotenv IS DELIBERATELY ABSENT
+# ---------------------------------------------------------------------------
+# Do not add python-dotenv, and do not load a .env file anywhere in this project.
+#
+# The Agent SDK does not call the HTTP API itself. It spawns the locally
+# installed `claude` CLI and inherits that CLI's ambient authentication. So this
+# project needs no key of its own, and reading a .env file can only do harm.
+#
+# The concrete failure: a sibling project in this workspace keeps a .env that
+# sets ANTHROPIC_BASE_URL to a gateway. Loading that file here would export the
+# variable into the environment the SDK hands to the `claude` subprocess, and
+# every call would be silently misrouted to a host that does not serve this API.
+# The symptom appears at the far end of the pipeline as an auth or 404 error
+# from an agent, which points nowhere near the real cause.
+#
+# Ambient authentication is the supported path. Leave the environment alone.
