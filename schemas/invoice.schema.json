@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Invoice extraction result",
+  "description": "The structured form of one unstructured invoice document. A companion tool definition sets strict: true against this schema, so the Claude API rejects a non-conforming response before our code ever sees it.",
+  "type": "object",
+  "$comment": "Three root constraints, and the concrete failure each one stops. (1) type: object rejects a bare array or a top-level JSON string, which is what a model returns when it decides to answer with a list of invoices or with prose it happened to quote. (2) additionalProperties: false turns an invented key such as 'notes' or 'total_due' into a hard error at extraction time. Without it the invented key flows downstream, is silently ignored by the consumer, and the real field it duplicated stays wrong with nothing to show for it. (3) required lists EVERY key, including the nullable ones. This is the most important decision in the file. A nullable field is required, not optional. Present-and-null means the extractor read the document and the field was genuinely absent from it. An omitted key means the extractor forgot the field, or the response was truncated mid-object, or the model ran out of tokens. Those are different failures with different fixes: the first is a fact about the document, the second is a bug in the pipeline. If nullable fields were merely optional, both would produce the same JSON and nothing could tell them apart. Making them required forces the model to state, key by key, that it looked.",
+  "additionalProperties": false,
+  "required": [
+    "invoice_number",
+    "vendor_name",
+    "invoice_date",
+    "due_date",
+    "purchase_order",
+    "currency",
+    "line_items",
+    "subtotal",
+    "tax",
+    "total",
+    "confidence",
+    "ambiguity_notes"
+  ],
+  "properties": {
+    "invoice_number": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "minLength 1 rejects an empty string. The invoice number is the join key used to match this record against a purchase-order system and to detect duplicate payment of the same invoice. An empty string is indistinguishable from a formatting bug downstream, and two different invoices that both extract to an empty string will collide as duplicates of each other. The type is not nullable, because a document with no identifier at all is not an invoice; that should fail extraction loudly rather than land in the database as a nameless row."
+    },
+    "vendor_name": {
+      "type": "string",
+      "minLength": 1,
+      "$comment": "minLength 1 rejects an empty string. The vendor name is what a human uses to recognise the record in a payment queue, so an empty string produces a row nobody can act on and nobody can search for. Not nullable for the same reason as invoice_number: every real invoice names who is owed the money, so a missing vendor means the extraction failed, not that the vendor was absent."
+    },
+    "invoice_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "$comment": "The pattern rejects the ambiguous formats an invoice actually prints. 03/04/2026 is 3 April in Europe and 4 March in the United States; accepting it stores a date that is wrong half the time with no way to detect which half. YYYY-MM-DD forces the model to commit to a reading at extraction time, where the source text is still available to justify it. format: date is annotation-only in most validators, so the pattern is what actually bites; together they also reject 'March 14, 2026' and 2026-3-4. Note what the pattern cannot do: it accepts 2026-13-45, which is well formed but not a real date, so a calendar check belongs in application code. The null branch is paired with membership in required: null means this document printed no invoice date, while an omitted key would mean the extractor never addressed the field."
+    },
+    "due_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "$comment": "The same YYYY-MM-DD pattern, and it matters more here than on invoice_date: due_date drives late-payment logic, so a day/month swap silently moves a deadline by up to eleven months and the error surfaces only as a missed payment. Nullable AND required, deliberately: many invoices state only Net 30 and never print a due date, and null records that fact honestly. An omitted key would let a truncated response masquerade as an invoice with no deadline, which is the one reading that never triggers an alert."
+    },
+    "purchase_order": {
+      "type": ["string", "null"],
+      "$comment": "Nullable AND required, and this field is the clearest case for the distinction. Many invoices legitimately carry no purchase-order reference (samples/sparse.txt is one). Forcing a string here would push the model into inventing a plausible-looking PO number to satisfy the schema, which is far worse than a null: a fabricated PO reconciles against nothing and sends a human hunting for a document that does not exist. Allowing the key to be omitted instead would let a truncated response read as 'no PO on this invoice'. Requiring the key with a null value gets both properties: the model must state that it looked, and it has a legal way to report absence without lying."
+    },
+    "currency": {
+      "type": "string",
+      "enum": ["USD", "EUR", "GBP", "CAD"],
+      "$comment": "The enum stops a free-string currency from admitting $, usd, 'US Dollars' and dollars as four distinct values for one actual currency. Without it every downstream consumer carries its own normalising layer, each written slightly differently, and the day one of them misses a spelling the amount is summed into the wrong currency total with no error raised anywhere. The enum moves that failure forward to extraction time, where the message names the offending value and the source document is still at hand. It also bounds the problem honestly: a fifth currency becomes a deliberate edit to this list, not a surprise string that quietly appears in production."
+    },
+    "line_items": {
+      "type": "array",
+      "minItems": 1,
+      "$comment": "minItems 1 rejects an empty array. An empty array is the shape a model returns when it could not parse the ruled table in the middle of the document, and it is dangerous precisely because it validates as well formed: the record arrives with a total but nothing to justify it, so the payment looks reviewed when the only part a human would actually check is missing. Requiring at least one item makes that parse failure surface as a validation error instead.",
+      "items": {
+        "type": "object",
+        "$comment": "additionalProperties: false stops a per-item key such as tax_rate or sku from being invented for some rows and not others, which produces a ragged array that every consumer then has to defend against. The required array covers all four keys so a row cannot arrive with a description and no amount; a partially filled row sums as zero and quietly understates the invoice.",
+        "additionalProperties": false,
+        "required": ["description", "quantity", "unit_price", "amount"],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "$comment": "minLength 1 rejects an empty string. The description is the only human-readable trace of what was bought, so an unlabelled row carrying a real amount is a charge nobody can approve or dispute. It is exactly what a model emits when it splits one wrapped table line into two rows."
+          },
+          "quantity": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "$comment": "exclusiveMinimum, not minimum, so zero is excluded as well as negatives. A zero-quantity row multiplies out to a zero amount and pads the array with a line that looks reviewed but charges nothing, hiding a row the model failed to read. A negative quantity is how a credit note leaks into an invoice record and turns a refund into a payable."
+          },
+          "unit_price": {
+            "type": "number",
+            "minimum": 0,
+            "$comment": "minimum 0 rather than exclusiveMinimum, because a genuinely free line (a waived fee, an included item printed at 0.00) is real and must be representable. Negatives are rejected: a negative unit price is a discount row the model has mis-parsed, and it would silently pull the extracted subtotal below what the document states."
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0,
+            "$comment": "minimum 0 rejects a negative line amount, which is the signature of a mis-read discount or credit line and would drag the summed subtotal below the printed one. Note what this schema cannot check: that amount equals quantity times unit_price, and that the amounts sum to subtotal. JSON Schema has no cross-field arithmetic, so those checks belong in application code; the constraints here only keep each value inside the range where that arithmetic is worth attempting."
+          }
+        }
+      }
+    },
+    "subtotal": {
+      "type": "number",
+      "minimum": 0,
+      "$comment": "minimum 0 rejects a negative subtotal, which cannot arise from a correctly read invoice and instead signals that a discount or credit line was parsed as the whole document. Not nullable: every invoice with at least one line item has a subtotal, even when the document never prints the word (samples/sparse.txt jumps straight to the total). The model must derive it rather than report absence, so there is no honest reason for null here."
+    },
+    "tax": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "$comment": "Nullable AND required, and here the reason differs from a plain zero. null means the document printed no tax line at all: zero-rated freight, a vendor not registered for VAT, an intra-community supply. 0 would be a claim that the document stated a tax of zero. Collapsing those two into one value destroys the evidence a VAT reconciliation needs. Forcing a number would make the model write 0 for a document that never mentioned tax, and that fabricated zero is unrecoverable afterwards. minimum 0 still guards the number branch, because a negative tax is a mis-read credit; null is unaffected by it, since numeric keywords ignore non-numeric instances."
+    },
+    "total": {
+      "type": "number",
+      "minimum": 0,
+      "$comment": "minimum 0 rejects a negative total. Not nullable: the total is the amount that will actually be paid, so an extractor that cannot find it has failed and must say so through a validation error rather than through a null that a payment job would read as nothing owed. As with subtotal, the schema cannot assert that subtotal plus tax equals total; that arithmetic check is application code, and it is the single most valuable one to write."
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "$comment": "This field exists to route documents, not to decorate them. A downstream queue compares it against a threshold and holds anything below the line for human review, so it is a control input, not a status badge. That is why the bounds are enforced: a model that emits 95 meaning ninety-five percent would clear every threshold ever written against a 0-to-1 scale, so every low-confidence extraction would auto-approve. minimum 0 and maximum 1 make that scale error a loud validation failure instead of a silent policy bypass. The schema deliberately cannot check calibration; it only guarantees the number is on the scale the router expects."
+    },
+    "ambiguity_notes": {
+      "type": "array",
+      "$comment": "This array captures what a single value would destroy. An invoice often carries two unlabelled dates (see samples/ambiguous.txt: 2026-05-02 in the letterhead and 2026-06-01 on the remittance stub, neither one marked). A schema offering only invoice_date and due_date forces the model to pick a reading and throw the alternative away, and the discarded reading leaves no trace at all: the output looks exactly as confident as a clean extraction. This array is where the model writes 'two unlabelled dates present, 2026-05-02 and 2026-06-01; assigned the earlier as invoice_date because terms are Net 30 and the dates are 30 days apart'. A reviewer can then check the judgement, instead of re-reading the document to discover that a judgement was made at all. There is no minItems: an empty array is the correct and meaningful answer for an unambiguous document, and requiring an entry would push the model into manufacturing doubt it does not have.",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "$comment": "minLength 1 rejects an empty string entry. An array holding one empty string reads as 'one ambiguity was recorded' to any consumer that only checks the length, so a reviewer is alerted to a note that carries no information, and learns to distrust the signal."
+      }
+    }
+  }
+}

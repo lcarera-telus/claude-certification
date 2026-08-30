@@ -1,0 +1,39 @@
+{
+  "invoice_number": "NW-2026-0417",
+  "vendor_name": "Northwind Paper & Print Co.",
+  "invoice_date": "2026-03-14",
+  "due_date": "2026-04-13",
+  "purchase_order": "PO-88213",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Letterhead stock, 24 lb bond (ream)",
+      "quantity": 12,
+      "unit_price": 18.5,
+      "amount": 222.0
+    },
+    {
+      "description": "Brochure printing, full colour, 4pp",
+      "quantity": 500,
+      "unit_price": 0.86,
+      "amount": 430.0
+    },
+    {
+      "description": "Saddle-stitch binding",
+      "quantity": 500,
+      "unit_price": 0.12,
+      "amount": 60.0
+    },
+    {
+      "description": "Rush delivery surcharge",
+      "quantity": 1,
+      "unit_price": 45.0,
+      "amount": 45.0
+    }
+  ],
+  "subtotal": 757.0,
+  "tax": 67.18,
+  "total": 824.18,
+  "confidence": 0.96,
+  "ambiguity_notes": []
+}

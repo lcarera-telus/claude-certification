@@ -1,0 +1,31 @@
+{
+  "invoice_number": "THL-4417",
+  "vendor_name": "Tyne Harbour Logistics Ltd",
+  "invoice_date": "2026-02-09",
+  "due_date": "2026-03-11",
+  "purchase_order": null,
+  "currency": "GBP",
+  "line_items": [
+    {
+      "description": "Container haulage, Felixstowe to Leeds",
+      "quantity": 1,
+      "unit_price": 640.0,
+      "amount": 640.0
+    },
+    {
+      "description": "Waiting time, 3 hrs",
+      "quantity": 3,
+      "unit_price": 42.5,
+      "amount": 127.5
+    }
+  ],
+  "subtotal": 767.5,
+  "tax": null,
+  "total": 767.5,
+  "confidence": 0.91,
+  "ambiguity_notes": [
+    "The document carries no purchase-order reference. It names a consignee but no buyer order number, so purchase_order is null rather than a guessed value taken from the consignee line.",
+    "The document prints no tax or VAT line of any kind. tax is null, meaning no tax line was stated, rather than 0, which would claim the document stated a tax of zero.",
+    "No subtotal is printed; the document goes straight from the two charge lines to TOTAL DUE. subtotal is derived as the sum of the line amounts, 640.00 + 127.50 = 767.50, which matches the printed total, as expected when no tax is charged."
+  ]
+}

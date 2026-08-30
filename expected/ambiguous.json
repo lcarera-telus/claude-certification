@@ -1,0 +1,37 @@
+{
+  "invoice_number": "MDS/2026/0092",
+  "vendor_name": "Meridian Design Studio",
+  "invoice_date": "2026-05-02",
+  "due_date": "2026-06-01",
+  "purchase_order": "4471-B",
+  "currency": "EUR",
+  "line_items": [
+    {
+      "description": "Brand identity workshop, on site (day)",
+      "quantity": 2,
+      "unit_price": 950.0,
+      "amount": 1900.0
+    },
+    {
+      "description": "Logo concept development, 3 routes",
+      "quantity": 1,
+      "unit_price": 1250.0,
+      "amount": 1250.0
+    },
+    {
+      "description": "Style guide layout (hour)",
+      "quantity": 8,
+      "unit_price": 85.0,
+      "amount": 680.0
+    }
+  ],
+  "subtotal": 3830.0,
+  "tax": 766.0,
+  "total": 4596.0,
+  "confidence": 0.68,
+  "ambiguity_notes": [
+    "Two unlabelled dates appear and neither is marked as an invoice date or a due date: 2026-05-02 sits alone in the letterhead block, and 2026-06-01 sits on the remittance advice stub at the foot of the page. Chosen reading: the earlier date 2026-05-02 is invoice_date and the later date 2026-06-01 is due_date. Evidence for the choice is that the stated terms are Net 30 and the two dates are exactly 30 days apart. The opposite reading, with 2026-06-01 as the issue date, would put the due date before the invoice date and is rejected on that basis.",
+    "Amounts use European formatting, where the full stop is a thousands separator and the comma is the decimal separator. 1.900,00 is read as 1900.00 and 4.596,00 as 4596.00. Read with United States conventions the same tokens would parse as 1.9 and 4.596, understating the invoice by three orders of magnitude.",
+    "The vendor name is printed only in lower case in the letterhead ('meridian design studio') and in title case on the remittance stub ('Meridian Design Studio'). Title case was taken as the intended form."
+  ]
+}

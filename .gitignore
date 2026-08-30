@@ -1,0 +1,11 @@
+# Holds a real API key or gateway token. A committed key is a leaked key,
+# and git history keeps it readable long after you delete the line.
+.env
+
+# Extraction results written by the CLI. They are regenerated on every run
+# and would otherwise create noisy diffs that hide real source changes.
+out/
+
+# Compiled bytecode. It is machine- and interpreter-specific, so committing
+# it produces conflicts that carry no information.
+__pycache__/
