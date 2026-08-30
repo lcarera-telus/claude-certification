@@ -1,0 +1,5 @@
+node_modules/
+
+# Personal Claude Code settings. Each engineer's local overrides stay out of version
+# control, while the shared, code-reviewed .claude/settings.json is committed.
+.claude/settings.local.json

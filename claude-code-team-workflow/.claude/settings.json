@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_comment": "Committed and code-reviewed. Claude Code ignores unknown keys that start with an underscore, so this note is safe. Per-person overrides go in settings.local.json.",
+  "permissions": {
+    "defaultMode": "plan",
+    "allow": [
+      "Bash(npm test)",
+      "Bash(npm install)",
+      "Bash(node --test *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git status *)"
+    ],
+    "ask": [
+      "Bash(git push *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Read(./.env)"
+    ]
+  }
+}
