@@ -2,13 +2,193 @@
 
 Chronological log of full mock exams and diagnostics only. Newest entry on top. Each entry: source, date, per-domain score, and what it implies for study priority. Task-statement-level drill notes live under `notes/<domain-folder>/<task-folder>/notes.md`, mirroring the folder structure in `projects/claudecertificationguide/`.
 
-**EXAM SCHEDULED: Thursday 2026-09-03, 15:00** (booked as of 2026-08-24 — 10 days out). Delivered by Pearson VUE, 60 items / 120 min, cut score 720/1000.
+**EXAM PASSED: 865/1000 on Thursday 2026-09-03** (cut score 720). Pearson VUE, 60 items / 120 min. Credential valid 12 months from the award date. The log below is the complete preparation record.
 
 **The official Exam Guide was read on 2026-08-24** — see `notes/official-exam-guide.md`. Two findings change how this log should be read: (1) the scenario bank is **6, not 8** — the long-tracked "Scenario 8 / agentic AI tools" blind spot does not exist; (2) the guide states that **per-domain percentages are informational and do not determine pass/fail**, only the total scaled score does — which independently confirms the 2026-08-18 conclusion that per-domain bars should not drive study priority. The remaining window is for repeated-misconception review and the multiple-response item format (new, previously unknown), not for adding practice volume.
 
-**Current focus (as of 2026-08-18, updated after Udemy mock exam #3/6):** Third Udemy exam passed at 93% (56/60), tied with exam #1; the three Udemy exams sit in a tight 90-93% band (~902-936/1000 weighted). **The D2/D3 dip flagged on exam #2 did not repeat** — D2 recovered 82%→100%, D3 83%→92%, and D1 hit 100% for the first time. The misses instead moved to **D4 (83%, first Udemy dip)** and **D5 (89%, after two 100%s)**, both 1-2 question deltas. No domain has dipped on two consecutive exams: the aggregate is stable while the decomposition rotates, which is small-sample noise, not a knowledge gap. Next: stop re-prioritising domains off single-exam percentages; hunt for *repeated* misconceptions across exams instead, and spend the time on the two genuinely unmeasured risks — Scenario 8 (agentic AI tools, the CLAUDE.md blind spot) and the unread official Exam Guide.
+**Current focus: none. The certification is complete.** The final state before the exam is preserved in the 2026-09-03 mock entry below.
 
 **Study strategy (decided 2026-07-31; diagnostic loop revised 2026-08-18):** Domain-by-domain, task-statement by task-statement, with periodic full mock exams. As of exam #3/6, per-domain percentages on 9-16 question samples have proven too noisy to set priority — the loop is now "which misconception recurs across exams," reviewed from the missed questions themselves, plus closing known content blind spots (Scenario 8, official Exam Guide) rather than adding practice volume.
+
+---
+
+## 2026-09-03 — REAL EXAM: Claude Certified Architect – Foundations (CCAR-F), Pearson VUE
+
+**865/1000 — PASSED** (cut score 720). Result confirmed 2026-09-07. Credential valid 12 months from the award date.
+
+Per-domain percent-correct from the score report is not recorded here. Add it if the report is still available.
+
+**Against the mocks:** 865 sits inside the range the mocks predicted. The final cyberskill mock was 939, and the six Udemy exams computed to roughly 868-936 weighted. The real exam landed 145 points above the cut score.
+
+**What the preparation record shows:** Nine full mocks across three sources, all passed, plus one diagnostic. The misconception-review loop adopted 2026-08-18 identified one real gap (D4) and confirmed it was fixed before exam day. Per-domain bars on small samples were noise, as the log concluded on 2026-08-18 and the official guide confirmed.
+
+**Next actions:** None for this credential. The exam is done. Note the renewal date one year out if the certification is still relevant then.
+
+---
+
+## 2026-09-03 — practice.cyberskill.world mock exam (60 questions, full attempt) — FINAL MOCK before the real exam
+
+**939/1000 — PASSED** (pass mark 720). 56/60 correct (93%). Taken on exam day, before the 15:00 real exam. This was the last mock of the preparation.
+
+| Domain | Score | % | Weighted pts |
+|---|---|---|---|
+| D1 Agentic Architecture & Orchestration | 14/14 | 100% | 270 |
+| D2 Tool Design & MCP Integration | 11/11 | 100% | 180 |
+| D3 Claude Code Configuration & Workflows | 11/12 | 92% | 183 |
+| D4 Prompt Engineering & Structured Output | 11/12 | 92% | 183 |
+| D5 Context Management & Reliability | 9/11 | 82% | 123 |
+
+**This is the best full-mock result on any source, and the first cyberskill full attempt above 830.** The two prior domain-weighted cyberskill full mocks scored 826 (2026-08-04) and 822 (2026-08-11). The 2026-09-01 cyberskill session was partial and is not comparable.
+
+Cyberskill full-mock trend:
+
+| Domain | 08-04 | 08-11 | 09-03 |
+|---|---|---|---|
+| D1 | 71% | 86% | 100% |
+| D2 | 100% | 64% | 100% |
+| D3 | 92% | 100% | 92% |
+| D4 | 67% | 83% | 92% |
+| D5 | 91% | 73% | 82% |
+| **Total** | **826** | **822** | **939** |
+
+**D1 and D2 both at 100%.** D1 was the new single-point flag from Udemy #6 (81%). D2 was the most consistent Udemy concern (73% on #4 and #6). Both came in perfect here on 14- and 11-question samples. This does not erase the Udemy D2 pattern, because the two sources have never tracked each other tightly. It does mean the review work since 2026-09-01 did not leave an obvious hole in either domain.
+
+**D4 at 92% for the second exam in a row** (Udemy #6 was also 92%). The three-exam D4 dip from Udemy #3-#5 has now been followed by two clean results across two sources. That is the strongest evidence so far that the D4 misconception review landed.
+
+**D5 at 82% is the only sub-90% domain.** D5 has the lowest weight (15%) and lost only 2 of 11 items. Its cyberskill history is 91% → 73% → 82%, and its Udemy history is 100% on five of six attempts. Two misses on exam-day morning is not a pattern. It is not worth new study in the hours before the exam.
+
+**Takeaway:** 939 is 219 points above the cut score with every domain at 82% or better. Nothing in this result changes the plan for today. Do not open new material before 15:00.
+
+**Next actions (exam is today, 2026-09-03, 15:00):**
+- Glance at the 2 missed D5 questions only if it costs under 10 minutes. Note the misconception, do not drill.
+- Re-read the multiple-response item format note in `notes/official-exam-guide.md`. No mock has presented that format.
+- Confirm ID, Pearson VUE check-in time, and a clear room for the webcam. Logistics matter more than content now.
+
+---
+
+## 2026-09-01 — practice.cyberskill.world partial attempt (60-question mock, only D1/D2/D5 questions actually answered)
+
+**NOT a full mock — do not read the headline 600/1000 (60%, "NOT PASSED") as a real score.** D3 (0/12, 0%) and D4 (1/12, 8%) reflect **unanswered questions**, because this session only worked through the D1/D2/D5 portion, not that every D3/D4 question was attempted and missed.
+
+| Domain | Score | % | Status |
+|---|---|---|---|
+| D1 Agentic Architecture & Orchestration | 14/14 | 100% | actually attempted |
+| D2 Tool Design & MCP Integration | 10/11 | 91% | actually attempted |
+| D3 Claude Code Configuration & Workflows | 0/12 | 0% | not attempted — skipped |
+| D4 Prompt Engineering & Structured Output | 1/12 | 8% | not attempted — skipped |
+| D5 Context Management & Reliability | 11/11 | 100% | actually attempted |
+
+**The only usable signal here is the D1/D2/D5 sub-scores**, and even those are from a different source (cyberskill) than the Udemy run logged the same day, so they shouldn't be pooled with the Udemy pattern table above. D1 100% and D5 100% are consistent with those domains' strong track record. **D2 at 91% here is notably better than the 73% just seen on Udemy #6** — another data point in D2's now-familiar volatility, not a contradiction of the Udemy concern, since the two sources have never tracked each other tightly.
+
+**Takeaway:** No action needed from the 0%/8% D3/D4 numbers — they're an artifact of an incomplete session, not evidence of a new gap. This entry exists only so a future read of this log doesn't mistake it for a real crash in D3/D4.
+
+**Next actions:** None from this entry specifically. If D3/D4 review time remains before 2026-09-03, prioritize it per the Udemy #6 findings above (D2 first, D1 second), not this partial session.
+
+---
+
+## 2026-09-01 — Udemy "Anthropic Claude Certified Architect – 3 Full Practice Exams" mock exam #6/6 (Exam mode, 60 questions)
+
+**86% correct (52/60) — PASSED** (72% required to pass). 57 minutes.
+
+| Domain | Score | % |
+|---|---|---|
+| D1 Agentic Architecture & Orchestration | 13/16 | 81% |
+| D2 Tool Design & MCP Integration | 8/11 | 73% |
+| D3 Claude Code Configuration & Workflows | 11/12 | 92% |
+| D4 Prompt Engineering & Structured Output | 11/12 | 92% |
+| D5 Context Management & Reliability | 9/9 | 100% |
+
+**This is Udemy course test 2 — the one test that had remained untaken since exam #5 (2026-08-30). All 6 course tests are now complete.**
+
+The six-exam pattern table, updated:
+
+| Domain | #1 | #2 | #3 | #4 | #5 | #6 |
+|---|---|---|---|---|---|---|
+| D1 | 94% | 94% | 100% | 100% | 94% | 81% |
+| D2 | 91% | 82% | 100% | 73% | 82% | 73% |
+| D3 | 92% | 83% | 92% | 83% | 92% | 92% |
+| D4 | 92% | 92% | 83% | 75% | 83% | 92% |
+| D5 | 100% | 100% | 89% | 100% | 100% | 100% |
+| **Total** | **93%** | **90%** | **93%** | **86%** | **90%** | **86%** |
+
+**D4 recovered to 92%, breaking its three-exam dip (83%→75%→83%) and matching the #1/#2 baseline.** This is the first evidence the 2026-08-30 review target is a real, fixable misconception rather than a durable gap — but it is one data point taken two days after that review was flagged, not confirmation the underlying issue is resolved. Don't stand down on reviewing the D4 misses already queued.
+
+**D2 dropped back to 73%, tying its worst-ever result (also 73% on #4).** Its most recent three attempts are 73% → 82% → 73% (pooled 25/33 = 76%), and five of six attempts have now landed at 82% or below. This is the strongest, most consistent signal in the whole six-exam set and remains the top review priority for the two days before the real exam.
+
+**New flag: D1 dropped to 81%, its first sub-90% result across all six exams**, breaking a streak of 94/94/100/100/94 (pooled 76/80 = 95% over the first five). One data point on a 16-question sample, taken on the final and fastest-paced (57-minute) attempt — plausibly a pacing/fatigue effect rather than a real gap, but D1 carries the largest single domain weight (27%), so even a possible blip is worth a quick look at which questions were missed.
+
+**Takeaway:** Still comfortably passing (86%, weighted ~890/1000 by the same hand-computed method used throughout this log) with 2 days to the real exam. D4's recovery is encouraging but unconfirmed; D2 remains the clearest, most reproducible weak spot across the full course; D1's dip is new and worth a fast look but not yet a pattern.
+
+**Next actions (exam is Thursday 2026-09-03 — 2 days out):**
+- Review the 3 missed D2 questions from this exam alongside the 5 from #4/#5 (8 total) — D2 is now the domain with the most consistent evidence of a real gap.
+- Quickly check the 3 missed D1 questions from this exam for a misconception; if it's a content gap rather than a rushed-pacing slip, note it, but don't over-index on a single data point this close to the exam.
+- Confirm the D4 review already queued from 2026-08-30 got done — this exam's 92% is encouraging but not proof.
+- No further practice volume — the course is fully covered; remaining time is misconception review only.
+
+---
+
+## 2026-08-30 — Udemy "Anthropic Claude Certified Architect – 3 Full Practice Exams" mock exam #5/6 (Exam mode, 60 questions)
+
+**90% correct (54/60) — PASSED** (72% required to pass). 1 hour 8 minutes.
+
+| Domain | Score | % |
+|---|---|---|
+| D1 Agentic Architecture & Orchestration | 15/16 | 94% |
+| D2 Tool Design & MCP Integration | 9/11 | 82% |
+| D3 Claude Code Configuration & Workflows | 11/12 | 92% |
+| D4 Prompt Engineering & Structured Output | 10/12 | 83% |
+| D5 Context Management & Reliability | 9/9 | 100% |
+
+Hand-computed weighted equivalent (same method as prior entries): ~900/1000.
+
+**Numbering note:** the Udemy sidebar labels this result "Practice Test 3" and shows Practice Test 2 as not taken. The "#N/6" in this log counts *attempts in order*, not the course's test numbers. Five of the six course tests are done (1, 3, 4, 5, 6); course test 2 is the one that remains.
+
+**The headline: D4 has now scored below 90% on three consecutive exams — 83% (#3), 75% (#4), 83% (#5) — after 92%/92% on #1/#2.** This is the first time any domain has met the rule this log set on 2026-08-15: treat ≥2 consecutive same-source dips as a real signal, not noise. Pooled across exams #3-#5, D4 is **29/36 (81%)**. A 36-question sample is no longer the 9-16 question noise this log has learned to distrust. Compare D1 at 77/80 (96%) pooled over five exams. D4 carries 20% of the real exam.
+
+**D2 has also dipped twice in a row** — 73% (#4), 82% (#5); pooled 17/22 (77%). Weaker evidence than D4 (22 questions, and #4 had a pacing confound — see that entry), but it now meets the two-in-a-row rule too.
+
+The five-exam pattern table, updated:
+
+| Domain | #1 | #2 | #3 | #4 | #5 |
+|---|---|---|---|---|---|
+| D1 | 94% | 94% | 100% | 100% | 94% |
+| D2 | 91% | 82% | 100% | 73% | 82% |
+| D3 | 92% | 83% | 92% | 83% | 92% |
+| D4 | 92% | 92% | 83% | 75% | 83% |
+| D5 | 100% | 100% | 89% | 100% | 100% |
+| **Total** | **93%** | **90%** | **93%** | **86%** | **90%** |
+
+**Takeaway:** Readiness is still not the question — five passes at 86-93%, weighted ~868-936 against a 720 cut. But the misconception-hunting loop adopted on 2026-08-18 has produced its first genuine hit, and it is D4, not the long-suspected D2/D3. Also note: the official guide says per-domain bars on the *real* exam do not determine pass/fail — the reason to fix D4 is that its misses feed the *total* score.
+
+**Next actions (exam is Thursday 2026-09-03 — 3 days out):**
+- Review all 7 missed D4 questions across exams #3, #4, #5 ("Review questions" on each). Name the misconception behind each one. Look for the repeat — that repeat is the study target for the remaining days.
+- Do the same for the 5 missed D2 questions on #4/#5 as a second pass.
+- Drill the multiple-response item format — still the one format risk no mock has presented.
+- Skip Udemy course test 2 unless the D4 review finishes early. More volume adds little now.
+
+---
+
+## 2026-08-22 — Udemy "Anthropic Claude Certified Architect – 3 Full Practice Exams" mock exam #4/6 (Exam mode, 60 questions)
+
+*(Logged retroactively on 2026-08-31, together with mock #5.)*
+
+**86% correct (52/60) — PASSED** (72% required to pass). **37 minutes — roughly half the usual pace** (prior attempts: 1h07m, 1h11m, 1h02m).
+
+| Domain | Score | % |
+|---|---|---|
+| D1 Agentic Architecture & Orchestration | 16/16 | 100% |
+| D2 Tool Design & MCP Integration | 8/11 | 73% |
+| D3 Claude Code Configuration & Workflows | 10/12 | 83% |
+| D4 Prompt Engineering & Structured Output | 9/12 | 75% |
+| D5 Context Management & Reliability | 9/9 | 100% |
+
+Hand-computed weighted equivalent: ~868/1000 — the lowest Udemy total so far, still well above the 720 cut.
+
+**Pacing confound:** 37 minutes for 60 questions is by far the fastest attempt, and this log already showed (2026-07-31) that rushing costs points. The D2 (73%) and D4 (75%) dips here could be speed, not knowledge. But the confound does not fully explain D4: exam #5, taken at normal pace (1h08m), still put D4 at 83% — so the D4 weakness survives the pacing correction, while D2 partially recovered (73%→82%).
+
+**Takeaway:** On its own this exam would be ambiguous — worst total, fastest pace, two weak bars. In sequence with #3 and #5 it becomes the middle data point of the first real D4 pattern. See the #5 entry for the pooled analysis.
+
+**Next actions:** folded into the 2026-08-30 entry above.
 
 ---
 
