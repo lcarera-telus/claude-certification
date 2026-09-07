@@ -16,7 +16,24 @@ Chronological log of full mock exams and diagnostics only. Newest entry on top. 
 
 **865/1000 — PASSED** (cut score 720). Result confirmed 2026-09-07. Credential valid 12 months from the award date.
 
-Per-domain percent-correct from the score report is not recorded here. Add it if the report is still available.
+**The score report (read 2026-09-07) breaks results down by task statement, not by domain.** It lists 29 objectives with percent-correct each. Item counts per objective are not shown, so exact per-domain percentages cannot be computed. The domain mapping below is mine, matched against `notes/official-exam-guide.md`.
+
+| Domain | Objectives scored | 100% | Below 100% |
+|---|---|---|---|
+| D1 Agentic Architecture & Orchestration | 6 | 5 | task decomposition (1.6): **75%** |
+| D2 Tool Design & MCP Integration | 6 | 5 | tool descriptions / disambiguation (2.1): **50%** |
+| D3 Claude Code Configuration & Workflows | 7 | 4 | enforce via hooks/permissions vs CLAUDE.md (3.1): **0%**; iterative refinement (3.5): **50%**; plan mode vs direct (3.4): **67%** |
+| D4 Prompt Engineering & Structured Output | 6 | 6 | none |
+| D5 Context Management & Reliability | 4 | 2 | conversation history in a stateless API (5.1): **50%**; human review routing by confidence (5.5): **67%** |
+
+**D4 was a clean sweep.** Every D4 objective scored 100%: structured output method, extraction schemas, tool_choice with JSON schema, few-shot extraction patterns, feedback loops, and sync vs Batch API. The three-exam Udemy dip in D4 was the only gap the misconception loop flagged as real, and the review closed it completely.
+
+**D3 carried the most misses, including the only 0%.** The 0% objective is "distinguish instructions that must be enforced through settings permissions or hooks from those appropriately placed in CLAUDE.md." The mocks never flagged D3 (92% on the last three). This is the one clear content gap the real exam exposed. The misconception is treating CLAUDE.md as an enforcement mechanism. CLAUDE.md is advisory guidance the model can ignore. Hard constraints belong in settings permissions or hooks, which the harness enforces.
+
+**D2 tool descriptions at 50% matches the Udemy D2 pattern** (73% on #4 and #6). The cyberskill 100% on exam-day morning did not carry over on this objective.
+
+**D1 and D5 misses are single objectives** at 75%, 50%, and 67%. With 2-4 items per objective, each is one or two missed questions.
+
 
 **Against the mocks:** 865 sits inside the range the mocks predicted. The final cyberskill mock was 939, and the six Udemy exams computed to roughly 868-936 weighted. The real exam landed 145 points above the cut score.
 
