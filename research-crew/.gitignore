@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# One directory per execution. Kept out of git: they hold cost data and
+# grow with every run. The first demo run is described in README.md.
+runs/
