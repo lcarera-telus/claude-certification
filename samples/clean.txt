@@ -1,0 +1,32 @@
+From: billing@northwindpaper.example
+Sent: Monday, 16 March 2026 09:12
+Subject: FW: Invoice NW-2026-0417
+
+---------- Forwarded message ----------
+
+NORTHWIND PAPER & PRINT CO.
+1180 Ferris Ave, Suite 4
+Rochester, NY 14607
+billing@northwindpaper.example | (585) 555-0142
+
+                                       I N V O I C E
+
+Bill To:                               Invoice No.       NW-2026-0417
+Halvorsen Architects LLP               Invoice Date      March 14, 2026
+77 Chandler Row                        Due Date          April 13, 2026
+Rochester, NY 14604                    Your PO           PO-88213
+                                       Terms             Net 30
+
+QTY   DESCRIPTION                                  UNIT      AMOUNT
+---   ----------------------------------------   -------   --------
+ 12   Letterhead stock, 24 lb bond (ream)          18.50      222.00
+500   Brochure printing, full colour, 4pp           0.86      430.00
+500   Saddle-stitch binding                         0.12       60.00
+  1   Rush delivery surcharge                      45.00       45.00
+                                                 -------   --------
+                                     Subtotal                757.00
+                                     Sales tax 8.875%         67.18
+                                     TOTAL USD               824.18
+
+Remit in US dollars to Northwind Paper & Print Co., acct ending 4471.
+Late payments accrue 1.5% per month. Thank you for your business.
