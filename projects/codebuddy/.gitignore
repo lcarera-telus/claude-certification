@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+sample-legacy-app/EXPLORATION.md
+codebuddy_generated/
