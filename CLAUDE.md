@@ -11,6 +11,7 @@ Current contents:
 - `CLAUDE.md` — this file
 - `claude-certified-architect/` — a clone of https://github.com/paullarionov/claude-certified-architect (~124 MB, its own git repo; the parent directory is not under version control)
 - `notes/` — own study notes and progress log (see Conventions), including `notes/official-exam-guide.md`, the distilled official Exam Guide
+- `notes/ccar-p/` — prep for the next exam, **Claude Certified Architect – Professional (CCAR-P)**: distilled official guide (`official-exam-guide.md`, authoritative) and collected resources plus the only first-hand report found (`resources.md`). CCAR-F was passed (865/1000); see `notes/progress-log.md`
 - `projects/claudecertificationguide/` — worked exercises from claudecertificationguide.com, one folder per task statement across the five domains
 - `.claude/rules/agentic-loop-stop-reason.md` — path-scoped rule for exercise code (stop-reason handling in manual tool-use loops)
 
