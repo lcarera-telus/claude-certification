@@ -4,7 +4,137 @@ Chronological log of CCAR-P mock exams and diagnostics. Newest entry on top. Sam
 
 **EXAM SCHEDULED: Thursday 2026-10-22** (booked 2026-10-14, 8 days out).
 
-**Current focus:** close three repeated misconceptions before the exam: soft vs hard controls, per-task model selection, RAG chunking. Then one more mock with full attention. claudearchitectguide gave 986 (62/63); Timo Labs, a second source, gave 80% (16/20). Both are above the pass line, but the second margin is much smaller.
+**Current focus:** review D5 governance (preventive vs detective controls, LLM-specific failure modes) and 4.4 diagnosis by layer before the exam. The second full mock (2026-10-18) gave 943 (59/63). Earlier: claudearchitectguide 986 (62/63), Timo Labs 80% (16/20).
+
+---
+
+## 2026-10-18 — claudearchitectguide.com Practice Exam (63 questions, timed exam mode) — SECOND FULL CCAR-P MOCK
+
+**943/1000 — PASS** (cut 720). 59/63 correct (94%); 44 correct needed for 720. Duration 68m 11s of 120m.
+
+| Domain | Weight | Score |
+|---|---|---|
+| D1 Solution Design & Architecture | 17% | 11/11 |
+| D2 Models, Prompting & Context Engineering | 13% | 8/8 |
+| D3 Integration | 19% | 12/12 |
+| D4 Evaluation, Testing & Optimization | 16% | **8/10** |
+| D5 Governance, Safety & Risk Management | 14% | **7/9** |
+| D6 Stakeholder Communication & Lifecycle | 14% | 9/9 |
+| D7 Developer Productivity & Enablement | 7% | 4/4 |
+
+D2 and D3 are clean. Both domains had misses in earlier sessions (2.1 model selection, 3.2 and 3.5).
+
+### The 4 misses
+
+**Item 2 — D5.** At design review, list the realistic failure modes of an LLM system. Which framing is the best starting point?
+- Picked A: infrastructure risks (provider outages, rate limits, timeout cascades). **Correct C: hallucination, prompt injection, context truncation, stale knowledge, tool misuse, inconsistent handling of ambiguous input.**
+- Why A is wrong: the risks are real, but standard engineering already covers them. A misses every failure mode that is specific to the model. B (a tested prompt makes other risks negligible) ignores that injection, staleness, and truncation occur with any prompt. D (alignment training handles safety) gives safety to a vendor that does not know this application's stakes.
+- **Misconception:** I listed the risks of any distributed system. A risk register for an LLM system must start with the failure modes of the technology itself, so each one gets an owner and a mitigation.
+
+**Item 36 — D4, select TWO.** Record which fields for each model call, so that cost and behavior can be attributed later without stored payloads?
+- Picked A + D. **Correct C + D.** C: token counts split by cached input, uncached input, and output. D: the stop reason.
+- Why A is wrong: every log line already has a timestamp, and a timestamp attributes nothing. B (client library version) matters only at upgrade time. E (characters) is a weak proxy for the output token count.
+- **Misconception:** I did not see that cost attribution needs the token *split*. The split lets you rebuild a bill and check if caching works. The stop reason catches silent truncation and unresolved tool loops, two failures that look like successes.
+
+**Match item (item number not in the screenshot) — D4, objective 4.4.** For each production symptom, select the layer to investigate first.
+- Statements 1, 4, 5 correct: wrong answers after a content refresh → retrieval and indexing. A section order stated twice in different words → prompt and instructions. A small model loses detail on 40-page documents → model capability fit.
+- Statement 2: the assistant apologizes instead of calling its lookup, and the logs show no call. Picked tool integration. **Correct: prompt and instructions.**
+- Statement 3: the agent reports success, the record is unchanged, and the integration returned a non-2xx status. Picked prompt and instructions. **Correct: tool integration.**
+- **Misconception:** I swapped the two. The rule: if the model never attempts the call, the defect is in what the model was told. If the call failed and the agent still reports success, the integration swallowed the error. Use the logs: "no call attempted" puts the integration out of scope.
+
+**Item 49 — D5, select TWO.** A payments assistant must never emit a full card number, with no tolerated failure rate.
+- Picked D + E. **Correct A + E.** A: tokenise card numbers upstream, so the full value never enters the context. E: a deterministic pattern check on every response that blocks display.
+- Why D is wrong: a daily audit finds the breach after the customer saw it. It detects, it does not prevent. B (scoring model) and C (system-prompt rule) are probabilistic, so "no tolerated failure rate" excludes them as the guarantee.
+- **Misconception:** the soft-vs-hard rule held (I did not pick B or C). But I picked a detective control in place of a preventive one. The strongest control removes the data from the model's context. If the value never reaches the model, the model cannot emit it.
+
+### What it shows
+
+- 43 points below the first mock from the same bank (986). The 4 misses are in D4 and D5 only, two each.
+- 3 of 4 misses are multi-response or match items. Each time I selected the correct count, so these are knowledge misses, not format errors.
+- Item 49 extends the repeated soft-vs-hard theme. Order of strength for a "must never" rule: keep the data out of the context, then a deterministic block, then probabilistic layers, then detection after the fact.
+- Items 2 and 49 are in D5. The Reddit report and Timo Q7 also point at D5. D5 is the area to review before the exam.
+- Timing is not a risk: 68 minutes for 63 items.
+
+**Next actions (4 days to the exam):**
+1. Review D5: the LLM-specific failure-mode list (item 2), and the preventive-vs-detective order of controls (item 49).
+2. Review 4.4 diagnosis by layer. Map each symptom to the evidence that rules layers out.
+3. Learn the per-call log fields: split token counts (cached, uncached, output) and stop reason.
+
+---
+
+## 2026-10-17 — claudearchitectguide.com domain drill: D1 Solution Design & Architecture (34 questions, checked as I went)
+
+**974 — 33/34 (97%).** Not a projection: I saw each answer before the next item. Duration 131m 58s (not timed).
+
+| Objective | Score |
+|---|---|
+| 1.1 Business problem to solution | 6/6 |
+| 1.2 End-to-end architecture | **5/6** |
+| 1.3 Architectural pattern choice | 6/6 |
+| 1.4 Multi-agent orchestration | 5/5 |
+| 1.5 Decomposition | 5/5 |
+| 1.6 Business value alignment | 6/6 |
+
+### The 1 miss
+
+**Item 9 — 1.2, match each.** For each weakness in a deployed solution, pick the end-to-end stage that is missing or underspecified. Options: input handling, processing, output contract, feedback loop.
+- Statements 1–4 correct: rotated scans → input handling. No one knows if quality changed → feedback loop. A required field is sometimes absent → output contract. Reviewer corrections are saved and never used → feedback loop.
+- Statement 5: good answers for short documents, incomplete answers for long ones. Picked input handling. **Correct: processing.**
+- Why input handling is wrong: the input is valid. Nothing is malformed or rotated. The design has no strategy for inputs above a certain size (chunking, map-reduce, multi-pass).
+- **Rule:** if the input is *invalid*, the fix is input handling. If the input is valid but the quality degrades with *size*, the fix is processing. Quality that tracks document length is a processing problem.
+
+### What it shows
+
+- D1 is solid. The only miss is one statement in a match item, and it was a stage-boundary error, not a gap.
+- 1.2 also had Round 2 Q3 correct (feedback loops). The feedback-loop pattern held twice in this item.
+
+---
+
+## 2026-10-15 — claudearchitectguide.com domain drill: D3 Integration (38 questions, checked as I went)
+
+**882 — 33/38 (87%).** The site marks a domain drill as *not* a projection: I saw each answer before the next item. It still counts for coverage and the mistakes deck. Duration 279m 55s (not timed).
+
+| Objective | Score |
+|---|---|
+| 3.1 Capability bloat | 5/5 |
+| 3.2 Authn & authz gaps | **3/5** |
+| 3.3 Accuracy-latency trade-offs | 5/5 |
+| 3.4 Observability at scale | 5/5 |
+| 3.5 RAG chunking & indexing | 4/5 |
+| 3.6 Retrieval strategy | 4/5 |
+| 3.7 Integration protocol choice | 3/4 |
+| 3.8 Progressive discovery | 4/4 |
+
+### The 5 misses
+
+**Item 7 — 3.2, select TWO.** The agent writes to the CRM with one integration account. Compliance cannot tell which employee made a change.
+- Picked D only. **Correct B + D.** D: propagate the end user's identity to the CRM. B: session traces with the user id and a correlation id carried into every downstream call.
+- **Format error, not knowledge.** I did not select the second option. D was right.
+- C (model writes the name in a free-text note) is unauthenticated and forgeable. E (longer retention) keeps more entries that all say "integration account". A (rotate credentials) does not show who did what.
+
+**Item 10 — 3.2.** A payroll assistant uses one service account with organisation-wide read access. The system prompt tells the model to return only the requester's data.
+- Picked D ("service accounts cannot legally be used with AI"). **Correct C: authorisation sits in prompt instructions, not in the access-control layer.**
+- **Real miss, and the repeated theme.** This is soft vs hard control again: Timo Q7, Timo Q15, and the CCAR-F 0% on 3.1. The model must not be able to retrieve what the user may not see. Fix it with per-user scoped credentials or pass-through auth. D is not a real rule. A widens the blast radius. B (store raw user passwords) is a credential anti-pattern.
+
+**Item 18 — 3.7, match each.** Connection mechanism per integration need.
+- Statement 5: a microservice calls the model once to classify a document inside its own controlled pipeline. Picked MCP server. **Correct: direct API integration.**
+- **Translation error.** I read statement 5 wrong. The rule: MCP is for standard, reusable, discoverable access by many consumers. A single owned pipeline call needs no discovery layer.
+
+**Item 20 — 3.5, select TWO.** A RAG assistant sometimes answers from superseded content after the nightly refresh.
+- Picked C only. **Correct C + E.** C: version metadata in the index, filter out superseded versions at query time. E: automated re-index pipeline that validates completeness and embedding consistency after each refresh.
+- **Format error, not knowledge.** C was right.
+- B (prompt: prefer the newest source) only works when the model sees a conflict. The usual failure is one stale chunk with nothing against it. Again soft vs hard. D (larger window) retrieves more stale content. A (weekly spot-check) is too slow.
+
+**Item 35 — 3.6, match each.** Retrieval strategy per need. Two statements wrong.
+- Statement 3: invoices above 10,000 euros in the last quarter. Picked lexical/exact-match. **Correct: structured query over metadata.** A threshold and a date range are field filters, not text matches.
+- Statement 5: clauses that mean the same as a given paragraph, in any wording. Picked structured query. **Correct: semantic vector search.**
+- Rule: meaning and paraphrase → semantic. Exact string → lexical. Thresholds, dates, fields → structured. Natural text *and* exact codes → hybrid.
+
+### What it shows
+
+- 3 of 5 misses are format or reading errors (items 7, 18, 20). On the real exam, each item states how many responses to select. **Count the selections before Next.**
+- Item 10 is the fourth soft-vs-hard miss across CCAR-F and CCAR-P. It is still the top risk. Rule: if the stem says "only", "never", or "must", find the option that enforces it below the model.
+- 3.2 at 3/5 is the only objective below 80%. One of the two misses is a format error.
 
 ---
 
