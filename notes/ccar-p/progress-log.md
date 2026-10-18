@@ -8,6 +8,26 @@ Chronological log of CCAR-P mock exams and diagnostics. Newest entry on top. Sam
 
 ---
 
+## 2026-10-18 — claudearchitectguide.com domain drill: D2 Models, Prompting & Context Engineering (26 questions, checked as I went)
+
+**1000 — 26/26 (100%).** Not a projection: I saw each answer before the next item. Duration 40m 23s (not timed).
+
+| Objective | Score |
+|---|---|
+| 2.1 Model selection | 6/6 |
+| 2.2 System prompts & templates | 5/5 |
+| 2.3 Prompt engineering technique | 5/5 |
+| 2.4 Context window & tokens | 5/5 |
+| 2.5 Prompt reuse & caching | 5/5 |
+
+### What it shows
+
+- 2.1 model selection is closed. It had two misses before (d2-01, Timo Q18). Here it is 6/6, and the second full mock had D2 at 8/8.
+- No misses, so this drill adds nothing to the misconception record.
+- Domain drills done: D1 (97%), D2 (100%), D3 (87%). D4 and D5 remain, and they hold all 4 misses from the second full mock. Drill D5 next, then D4.
+
+---
+
 ## 2026-10-18 — claudearchitectguide.com Practice Exam (63 questions, timed exam mode) — SECOND FULL CCAR-P MOCK
 
 **943/1000 — PASS** (cut 720). 59/63 correct (94%); 44 correct needed for 720. Duration 68m 11s of 120m.
