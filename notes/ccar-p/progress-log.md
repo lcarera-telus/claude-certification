@@ -8,6 +8,27 @@ Chronological log of CCAR-P mock exams and diagnostics. Newest entry on top. Sam
 
 ---
 
+## 2026-10-18 — claudearchitectguide.com domain drill: D5 Governance, Safety & Risk Management (28 questions, checked as I went)
+
+**1000 — 28/28 (100%).** Not a projection: I saw each answer before the next item. Duration 10m 33s (not timed).
+
+| Objective | Score |
+|---|---|
+| 5.1 Guardrails & safety controls | 6/6 |
+| 5.2 Risks & failure modes | 6/6 |
+| 5.3 Human-in-the-loop | 5/5 |
+| 5.4 Regulatory compliance | 6/6 |
+| 5.5 Ethical AI | 5/5 |
+
+### What it shows
+
+- 5.1 and 5.2 are clean. Those are the two objectives behind the D5 misses in the second full mock (item 49 controls, item 2 failure modes).
+- **Pace caveat:** 10m 33s for 28 items is about 23 seconds per item. That is much faster than the other drills (D2: 93 s per item). Some items probably repeat items from the full mocks. A 100% here is weaker evidence than the D2 result.
+- No misses, so this drill adds nothing to the misconception record.
+- Domain drills done: D1 (97%), D2 (100%), D3 (87%), D5 (100%). D4 remains. It had 2 misses in the second full mock (item 36 log fields, 4.4 diagnosis by layer). Drill D4 next.
+
+---
+
 ## 2026-10-18 — claudearchitectguide.com domain drill: D2 Models, Prompting & Context Engineering (26 questions, checked as I went)
 
 **1000 — 26/26 (100%).** Not a projection: I saw each answer before the next item. Duration 40m 23s (not timed).
