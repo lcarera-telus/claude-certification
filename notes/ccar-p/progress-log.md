@@ -4,7 +4,35 @@ Chronological log of CCAR-P mock exams and diagnostics. Newest entry on top. Sam
 
 **EXAM SCHEDULED: Thursday 2026-10-22** (booked 2026-10-14, 8 days out).
 
-**Current focus:** review D5 governance (preventive vs detective controls, LLM-specific failure modes) and 4.4 diagnosis by layer before the exam. The second full mock (2026-10-18) gave 943 (59/63). Earlier: claudearchitectguide 986 (62/63), Timo Labs 80% (16/20).
+**Current focus:** the five planned domain drills are done (D1–D5). Before the exam, learn the per-call log fields (split `usage` counts and `stop_reason`). I missed that item twice (2026-10-18 item 36, 2026-10-21 item 29). The second full mock (2026-10-18) gave 943 (59/63). Earlier: claudearchitectguide 986 (62/63), Timo Labs 80% (16/20).
+
+---
+
+## 2026-10-21 — claudearchitectguide.com domain drill: D4 Evaluation, Testing & Optimization (32 questions, checked as I went)
+
+**972 — 31/32 (97%).** Not a projection: I saw each answer before the next item. Duration 34m 7s (not timed).
+
+| Objective | Score |
+|---|---|
+| 4.1 Evaluation metrics | 6/6 |
+| 4.2 Eval datasets & frameworks | 5/5 |
+| 4.3 A/B testing & iteration | 5/5 |
+| 4.4 Diagnosing failures | 5/5 |
+| 4.5 Cost & latency optimisation | 5/5 |
+| 4.6 Logging & monitoring | **5/6** |
+
+### The miss
+
+**Item 29 — D4, objective 4.6, select TWO.** Record which fields for each model call, so that cost and behavior can be attributed later without stored payloads?
+- Picked A (the `anthropic-ratelimit-tokens-remaining` header). **Correct C + E.** C: `stop_reason`. E: `usage` split into `input_tokens`, cache writes, cache reads, and `output_tokens`.
+- Why A is wrong: the header shows the headroom against a rate limit, rounded to the nearest thousand. It does not show what the call cost or did. B (`anthropic-version`) is the same on every call, so it attributes nothing. D (character length) is a weak proxy for `output_tokens`, which is already in E.
+- **Misconception (second time):** this is the same item as 2026-10-18 item 36, with new distractors. Both times I picked a field that looks like metadata (a timestamp, then a rate-limit header) in place of one of the two fields that matter. The rule: **cost = split `usage` (rebuild the bill and check that caching works). Behavior = `stop_reason` (catch failures that arrive as HTTP 200: `max_tokens`, `model_context_window_exceeded`, `refusal`, unresolved tool loops).** Any other per-call field is noise for attribution.
+
+### What it shows
+
+- 4.4 diagnosis by layer is now 5/5. It was a miss in the second full mock (the match item).
+- 4.6 log fields is the only objective that failed twice. It is the one item to review before the exam.
+- The five planned domain drills are done: D1 (97%), D2 (100%), D3 (87%), D4 (97%), D5 (100%). D6 and D7 had no drill. They were clean in both full mocks (9/9 and 4/4).
 
 ---
 
